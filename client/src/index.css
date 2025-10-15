@@ -1,0 +1,18 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+@theme {
+  --font-sans: "Quicksand", ui-sans-serif, system-ui;
+}
+
+/* Layout base */
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  @apply font-sans bg-blue-500 text-black;
+}
