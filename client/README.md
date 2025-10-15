@@ -1,73 +1,58 @@
-# React + TypeScript + Vite
+LUDIVERSE — Plataforma online de venta de juegos de mesa
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+LUDIVERSE es una e-commerce para juegos de mesa construida con TypeScript, React, Node.js y PostgreSQL. El objetivo es ofrecer un catálogo claro, un proceso de compra simple y herramientas de administración para gestionar inventario, pedidos y clientes.
+En el futuro se integrará con Mercado Libre para sincronizar publicaciones, precios y stock.
 
-Currently, two official plugins are available:
+✨ Características (MVP)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Catálogo de productos con imágenes, precio, etiquetas y categorías.
 
-## React Compiler
+Búsqueda y filtros (categoría, precio, disponibilidad).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Ficha de producto con galería y variantes (p. ej., accesorios).
 
-## Expanding the ESLint configuration
+Carrito persistente y cálculo de totales.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Autenticación básica (JWT) y roles (cliente/admin).
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Panel mínimo de administración para CRUD de productos.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Roadmap
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Checkout con pasarela de pago.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Órdenes, estados y notificaciones por correo.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Reviews/valoraciones.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Integración con Mercado Libre (publicaciones, stock, órdenes).
+
+Despliegue en nube y CI/CD.
+
+🧱 Stack técnico
+
+Frontend: React + TypeScript, Tailwind/DaisyUI (UI), React Router.
+
+Backend: Node.js + TypeScript (Express), JWT, Zod/Helmet (validación/seguridad).
+
+Base de datos: PostgreSQL (via pg).
+
+Testing: Vitest/Jest (según módulo).
+
+Herramientas: ESLint + Prettier, Husky (pre-commit).
+
+Infra (futuro): Docker, Render/Vercel/Fly.io, S3 u otro storage para medios.
+
+🏗️ Arquitectura
+
+Monorepo simple frontend + backend (o carpetas separadas):
+
+/ludiverse
+├─ frontend/ # React + TS
+├─ backend/ # Node + Express + TS
+├─ docs/ # decisiones, endpoints, diagramas
+└─ README.md
+
+Backend (capas):
+routes → controllers → services → repositories (DB) → models
+Middlewares para auth, manejo de errores y validación de inputs.
