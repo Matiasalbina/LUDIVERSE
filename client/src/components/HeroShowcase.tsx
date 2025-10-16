@@ -64,7 +64,7 @@ const sideCards: SideCard[] = [
 const HeroShowcase: React.FC = () => {
   return (
     <section className="w-full">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6  lg:px-8 mt-4 lg:mt-0">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6  lg:px-8  lg:mt-6">
         {/* Grid: en desktop 3 columnas; el carrusel ocupa 2 */}
         <div className="grid gap-4 lg:grid-cols-3 ">
           {/* Carrusel principal */}

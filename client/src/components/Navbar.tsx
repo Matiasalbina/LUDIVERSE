@@ -1,5 +1,20 @@
 import React, { useState } from "react";
-import { ShoppingCart, Search, Users, Menu, SquarePen } from "lucide-react";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link,
+  NavLink,
+  Outlet,
+} from "react-router-dom";
+import {
+  ShoppingCart,
+  Search,
+  Users,
+  Menu,
+  SquarePen,
+  Disc2,
+} from "lucide-react";
 import type { FC } from "react";
 import {
   Menu as DropdownMenu,
@@ -22,7 +37,9 @@ const Navbar: FC = () => {
         <div className="w-full lg:w-[80%] mx-auto flex flex-col lg:flex-row items-center lg:justify-between gap-4 lg:py-4 lg:px-6">
           {/* Logo */}
           <div className="flex items-center">
-            <h2 className="text-xl font-bold">LUDIVERSE</h2>
+            <Link to="/" className="text-xl font-bold">
+              LUDIVERSE
+            </Link>
           </div>
 
           {/* Buscador */}
@@ -72,47 +89,62 @@ const Navbar: FC = () => {
 
       {/* Barra morada: solo desktop */}
       <div className="hidden lg:flex bg-purple-600 w-full text-white justify-center">
-        <div className="w-[80%] flex gap-4 ">
+        <div className="w-[80%] flex ">
           <DropdownMenu as="div" className="relative inline-block">
-            <MenuButton className="inline-flex items-center gap-x-1.5 bg-purple-600 px-3 py-2 text-md font-semibold text-white hover:bg-lime-600">
+            <MenuButton className="inline-flex items-center gap-x-1.5 bg-purple-600 px-3 py-2 text-lg font-bold text-white hover:bg-lime-600">
               Juegos De Mesa
               <ChevronDownIcon aria-hidden="true" className="-mr-1 size-5" />
             </MenuButton>
             <MenuItems className="absolute left-0 z-10 w-56 rounded-md bg-white shadow-lg outline-1 outline-black/5">
               <div className="py-1">
                 <MenuItem>
-                  <a className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <Link
+                    to="eurogames"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200"
+                  >
                     Eurogames
-                  </a>
+                  </Link>
                 </MenuItem>
                 <MenuItem>
-                  <a className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <Link
+                    to="familiares"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200"
+                  >
                     Familiares
-                  </a>
+                  </Link>
                 </MenuItem>
                 <MenuItem>
-                  <a className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <Link
+                    to="party"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200"
+                  >
                     Party
-                  </a>
+                  </Link>
                 </MenuItem>
               </div>
             </MenuItems>
           </DropdownMenu>
 
           <DropdownMenu as="div" className="relative inline-block">
-            <MenuButton className="inline-flex items-center gap-x-1.5 bg-purple-600 px-3 py-2 text-md font-semibold text-white hover:bg-lime-600">
+            <MenuButton className="inline-flex items-center gap-x-1.5 bg-purple-600 px-3 py-2 text-lg font-bold text-white hover:bg-lime-600">
               Accesorios
               <ChevronDownIcon aria-hidden="true" className="-mr-1 size-5" />
             </MenuButton>
             <MenuItems className="absolute left-0 z-10 w-56 rounded-md bg-white shadow-lg outline-1 outline-black/5">
               <div className="py-1">
                 <MenuItem>
-                  <a className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <Link
+                    to="folders"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-200"
+                  >
                     Folders
-                  </a>
+                  </Link>
                 </MenuItem>
               </div>
             </MenuItems>
+            <button className="text-lg font-bold text-white hover:bg-lime-600 px-3 py-2">
+              Destacados
+            </button>
           </DropdownMenu>
         </div>
       </div>
@@ -142,9 +174,15 @@ const Navbar: FC = () => {
                   />
                 </Disclosure.Button>
                 <Disclosure.Panel className=" bg-gray-200 pl-4 space-y-1 text-sm text-gray-700">
-                  <a className="block py-1">Eurogames</a>
-                  <a className="block py-1">Familiares</a>
-                  <a className="block py-1">Party</a>
+                  <Link to="eurogames" className="block py-1">
+                    Eurogames
+                  </Link>
+                  <Link to="familiares" className="block py-1">
+                    Familiares
+                  </Link>
+                  <Link to="party" className="block py-1">
+                    Party
+                  </Link>
                 </Disclosure.Panel>
               </>
             )}
@@ -167,6 +205,12 @@ const Navbar: FC = () => {
                 </Disclosure.Panel>
               </>
             )}
+          </Disclosure>
+          <Disclosure>
+            {" "}
+            <Disclosure.Button className="w-full flex items-center justify-between py-2">
+              <span className="font-medium">Destacados</span>
+            </Disclosure.Button>
           </Disclosure>
         </div>
       </div>
